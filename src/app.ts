@@ -3,8 +3,9 @@ import expressServer from './server';
 import connectPSQlDb from './config/dbConnection';
 import { logger } from './common/logger';
 
+
 // Normalize port number which will expose server
-const port = normalizePort(8082);
+const port = normalizePort(Number(process.env.PORT));
 
 // Instantiate the expressServer class
 const expressInstance = new expressServer().expressInstance;
