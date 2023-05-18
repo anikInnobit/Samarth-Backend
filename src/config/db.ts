@@ -20,7 +20,7 @@ const config: dbconfigType = JSON.parse(JSON.stringify(dbconfig));
 
 const env: string = process.env.NODE_ENV || "local";
 
-const { host, database, dialect, username, password,port,maxPool,minPool } = config[env];
+const { host, database, dialect, username, password, port, maxPool, minPool } = config[env];
 
 
 class Database {
