@@ -2,8 +2,8 @@
 
 import { Request, Response, NextFunction } from 'express';
 import { validationResult } from 'express-validator';
-import { logger } from './logger';
-import {RESPONSE_STATUS} from './constants';
+import { logger } from '../logger';
+import {RESPONSE_STATUS} from '../constants';
 
 export class Validator {
   rules: any;

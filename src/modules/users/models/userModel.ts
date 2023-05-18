@@ -11,6 +11,7 @@
 //     type: UUID,
 //     defaultValue: UUIDV4,
 //     primaryKey: true,
+
 //     allowNull: false,
 //   },
 //   username: {

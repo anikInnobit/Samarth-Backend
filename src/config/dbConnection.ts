@@ -2,7 +2,7 @@ import Umzug = require("umzug");
 import sequelize from 'sequelize';
 import path from 'path';
 import databaseInstance from "./db";
-import { logger } from "../utils/logger";
+import { logger } from "../common/logger";
 
 const migrate = new Umzug({
     migrations: {
@@ -54,18 +54,18 @@ const databaseConnection = async () => {
                         logger.info('Data seed successfull. ')
                                 return Promise.resolve()
                             }).catch((err: any) => {
-                        logger.error('Seeders failed.', err);
+                        logger.error('Seeders failed.', err.message);
                                 return Promise.reject()
                             })
                         return Promise.resolve()
                     }).catch((err: any) => {
-                        logger.error('Migrations failed.',err);
+                        logger.error('Migrations failed.',err.message);
                         return Promise.reject()
                     })
                 return Promise.resolve()
 
             }).catch((err) => {
-                logger.error('Unable to connect to the database.', err);
+                logger.error('Unable to connect to the database.', err.message);
                 return Promise.reject()
             })
         return Promise.resolve()

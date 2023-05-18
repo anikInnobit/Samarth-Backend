@@ -1,5 +1,5 @@
 import Exception from './exception'
-import { ERROR_TYPE } from '../utils/constants'
+import { ERROR_TYPE } from '../constants'
 
 export default {
   internalServerError(msg?: string, err?: Error) {

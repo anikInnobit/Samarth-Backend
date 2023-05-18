@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import ApiResponse from '../responses/apiResponse';
 import CustomException from '../exceptions/customException';
-import { STATUS_CODE, ERROR_TYPE, RESPONSE_STATUS } from '../utils/constants';
+import { STATUS_CODE, ERROR_TYPE, RESPONSE_STATUS } from '../constants';
 
 let result: ApiResponse;
 

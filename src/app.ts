@@ -1,7 +1,7 @@
 import http from 'http';
 import expressServer from './server';
 import connectPSQlDb from './config/dbConnection';
-import { logger } from './utils/logger';
+import { logger } from './common/logger';
 
 // Normalize port number which will expose server
 const port = normalizePort(8082);
@@ -16,9 +16,10 @@ expressInstance.set('port', port);
 export const server = http.createServer(expressInstance);
 
 
+
 // Start listening on the specified Port (Default: 3000)
 server.listen(port, () => {
-    logger.debug(`listening on port ${port}`);
+    logger.log("info",`listening on port ${port}`,{module:"app.ts"});
 });
 
 

@@ -1,5 +1,5 @@
 import { Op } from 'sequelize'
-import constants =  require ('./constants');
+import constants =  require ('../common/constants');
 export interface QueryParams {
   page?: string
   limit?: string

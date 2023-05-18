@@ -13,7 +13,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "build": "rimraf ./build && tsc",
+  "build": "rimraf ./dist && tsc",
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/compression": "^1.7.2",
@@ -30,9 +30,6 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
-    "bunyan": "^1.8.15",
-    "bunyan-format": "^0.2.1",
-    "bunyan-rotating-file-stream": "^2.0.3",
     "compression": "^1.7.4",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -45,7 +42,7 @@
     "sequelize-typescript": "^2.1.5",
     "socket.io": "^4.6.1",
     "socket.io-client": "^4.6.1",
-    "twilio": "^4.10.0",
-    "umzug": "^2.3.0"
+    "umzug": "^2.3.0",
+    "winston": "^3.8.2"
   }
 }
