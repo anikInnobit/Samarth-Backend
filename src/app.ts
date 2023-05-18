@@ -19,7 +19,7 @@ export const server = http.createServer(expressInstance);
 
 // Start listening on the specified Port (Default: 3000)
 server.listen(port, () => {
-    logger.log("info",`listening on port ${port}`,{module:"app.ts"});
+    logger.info(`listening on port ${port}`, {module:"app.ts"});
 });
 
 
