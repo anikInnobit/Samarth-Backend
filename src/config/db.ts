@@ -3,7 +3,7 @@ import sequelize, { Sequelize } from 'sequelize'
 import dotenv from 'dotenv'
 const Umzug = require('umzug');
 import path from 'path'
-import { logger } from '../utils/logger';
+import { logger } from '../common/logger';
 
 dotenv.config()
 
@@ -18,9 +18,9 @@ class Database {
   database: sequelize.Sequelize
 
   constructor() {
-    this.db = process.env.DB_NAME || 'localdb'
+    this.db = process.env.DB_NAME || 'samarthDB'
     this.user = process.env.DB_USER || 'postgres'
-    this.password = process.env.DB_PASS || 'rgbXYZ@9182'
+    this.password = process.env.DB_PASS || 'rgbxyz@9182'
     this.host = process.env.DB_HOST || 'localhost'
     this.port = Number(process.env.DB_PORT) || 5432
     this.maxPool = Number(process.env.MAX_POOL) || 100

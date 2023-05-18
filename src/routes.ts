@@ -1,6 +1,4 @@
 import { Router } from "express"
-// import KeonnRouter from "./modules/deviceManager/routes"
-// import userRoutes from "./modules/users/routes/userRoutes"
 
 const mainRouter = Router()
 

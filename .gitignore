@@ -1,1 +1,12 @@
-node_modules
+# Node artifact files
+node_modules/
+dist/
+
+# Log files
+*.log
+
+# Other Module
+.env
+.vscode/
+package-lock.json
+.circleci/

@@ -1,4 +1,4 @@
-import { STATUS_CODE } from "../utils/constants";
+import { STATUS_CODE } from "../constants";
 
 class ApiResponse {
   statusCode: number;
