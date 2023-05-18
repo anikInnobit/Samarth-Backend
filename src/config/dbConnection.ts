@@ -12,9 +12,6 @@ const migrate = new Umzug({
         // inject sequelize's QueryInterface in the migrations
         params: [databaseInstance.getQueryInterface(), sequelize],
     },
-    // indicates that the migration data should be store in the database
-    // itself through sequelize. The default configuration creates a table
-    // named `SequelizeMeta`.
     storage: 'sequelize',
     storageOptions: {
         sequelize: databaseInstance,
@@ -29,9 +26,6 @@ const seed = new Umzug({
         // inject sequelize's QueryInterface in the migrations
         params: [databaseInstance.getQueryInterface(), sequelize],
     },
-    // indicates that the migration data should be store in the database
-    // itself through sequelize. The default configuration creates a table
-    // named `SequelizeMeta`.
     storage: 'sequelize',
     storageOptions: {
         sequelize: databaseInstance,
@@ -40,12 +34,9 @@ const seed = new Umzug({
 
 const databaseConnection = async () => {
     try {
-       
         const result: any = await databaseInstance.authenticate()
             .then(async () => {
-              
                 logger.info('Database successfully connected.')
-
                 await migrate.up()
                     .then(async () => {
                         logger.info('All migrations performed successfully.')
@@ -71,7 +62,6 @@ const databaseConnection = async () => {
         return Promise.resolve()
     }
     catch (err) {
-      
         logger.error('Failed to connect with Database', err)
         return Promise.reject()
     }
