@@ -14,7 +14,7 @@ const env:any = process.env.NODE_ENV || 'dev';
 
 export const config = {
     BASE_URL: baseUrls[env],
-    API_PREFIX: '/api/v1/',
+    API_PREFIX: '/api/v1',
 }
 
  

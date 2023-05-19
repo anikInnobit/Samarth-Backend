@@ -36,7 +36,9 @@ const databaseConnection = async () => {
     try {
         const result: any = await databaseInstance.authenticate()
             .then(async () => {
+
                 logger.info('Database successfully connected.',{module:'dbConnection.ts'})
+
                 await migrate.up()
                     .then(async () => {
                         logger.info('All migrations performed successfully.',{module:'dbConnection.ts'})
@@ -62,6 +64,7 @@ const databaseConnection = async () => {
         return Promise.resolve()
     }
     catch (err) {
+
         logger.error('Failed to connect with Database',{module:'dbConnection.ts'}, err)
         return Promise.reject()
     }

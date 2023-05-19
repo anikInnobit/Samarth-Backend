@@ -17,11 +17,15 @@ expressInstance.set('port', port);
 export const server = http.createServer(expressInstance);
 
 
-
 // Start listening on the specified Port (Default: 3000)
 server.listen(port, () => {
     logger.info(`listening on port ${port}`, {module:"app.ts"});
 });
+
+
+expressInstance.get('/', (req, res) => {
+    res.send(`Server Running on port : ${port}`)
+ })
 
 
 connectPSQlDb();
