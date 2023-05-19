@@ -1,28 +1,29 @@
-// import { Router } from "express";
-// import { UserController } from "../controllers/userController";
+import { Router } from "express";
+import { UserController } from "../controllers/userController";
+import { config } from "../../../config/configIndex";
 
 
-// class MainRouter {
+class UserRoutes {
 
-//     router: Router;
-//     user: UserController
-//     constructor() {
-//         this.user = new UserController()
-//         this.router = Router({ mergeParams: true })
-//         this.userRouter()
-//     }
+    router: Router;
+    user: UserController
+    constructor() {
+        this.user = new UserController()
+        // this.router = Router({ mergeParams: true })
+        this.router = Router();
+        this.userRouter()
+    }
 
-//     userRouter() {
-//         this.router.route(`api/v1/users`)
-//             .post(this.user.create)
-//         this.router.route(`api/v1/user/:userId`)
-//             .patch(this.user.update)
-//         this.router.route(`api/v1/user/:userId`)
-//             .delete(this.user.delete)
-//         this.router.route(`api/v1/user/:userId`)
-//             .get(this.user.readAll)
 
-//     }
+    userRouter() {
 
-// }
-// export default new MainRouter().router
+        this.router.route(`${config.API_PREFIX}/users`).get(this.user.readAll)
+        this.router.route(`${config.API_PREFIX}/user/:id`).get(this.user.readOne)
+        this.router.route(`${config.API_PREFIX}/users`).post(this.user.create)
+        this.router.route(`${config.API_PREFIX}/user/:id`).patch(this.user.update)
+        this.router.route(`${config.API_PREFIX}/user/:id`).delete(this.user.delete)
+
+    }
+
+}
+export default new UserRoutes().router
