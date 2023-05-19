@@ -9,36 +9,23 @@ const baseServiceInstance = new BaseService(User)
 
 export class userService {
 
-    constructor(){}
+    constructor() { }
 
-    //this is to get all the user
-    async getUser(req: any) {
+
+    async getAllUser(req: any) {
         try {
-            let user = await User.findAll()
-            return Promise.resolve(user)
-        }
-        catch (err) {
-            return Promise.reject(err)
-        }
-    }
 
-
-    async getAllUser2(req: any){
-        try{
-            
             let resp = await baseServiceInstance.readAll(req);
-          
+
             return Promise.resolve(resp);
         }
-        catch(error: any){
+        catch (error: any) {
             return Promise.reject(error);
         }
     }
-
     // this is to get user by Id
     async getUserById(req: any) {
         try {
-            // let userExist = await User.findByPk(req.params.id)
             let userExist = await baseServiceInstance.readOne(req)
             if (!userExist) {
                 throw (`user with id ${req.params.id} does not exist`)
@@ -52,17 +39,12 @@ export class userService {
     async createUser(req: any) {
         try {
             const { username } = req.body;
-
             req.query.username = username;
-
-            // let existingUser = await User.findAll()
             let existingUser = await baseServiceInstance.readAll(req);
-            if(existingUser?.count != 0){
+            if (existingUser?.count != 0) {
                 throw (`user with username ${username} already exists`)
             }
-
             const newUser = await baseServiceInstance.create(req);
-
             return Promise.resolve(newUser);
         }
         catch (err) {
@@ -74,21 +56,11 @@ export class userService {
     async updateUser(req: any) {
         try {
             // check if user exist or not
-            // let userExist = await User.findByPk(req.params.id)
-            
-            let userExist =  await baseServiceInstance.readOne(req);
-           
+            let userExist = await baseServiceInstance.readOne(req);
             if (!userExist) {
                 throw (`user with id ${req.params.id} does not exist`)
             }
-
-            // let user = await User.update(req.body, {
-            //     where: { id: req.params.id },
-            //     returning: true
-            // })
-          
             let user = await baseServiceInstance.update(req);
-
             return Promise.resolve(user)
         } catch (err) {
             console.log("err: ", err);
@@ -100,59 +72,19 @@ export class userService {
     //this is to delete user by Id 
     async deleteUser(req: any) {
         try {
-            // let existingUser = await User.findByPk(req.params.id);
-            let existingUser = await baseServiceInstance.readOne(req);
 
+            let existingUser = await baseServiceInstance.readOne(req);
             // throw error if user is not exist
             if ((!existingUser)) {
                 throw ('user to be deleted is not found')
             }
-
             // delete user 
-            // await User.destroy({ where: { id: req.params.id } })
             await baseServiceInstance.delete(req);
 
             return Promise.resolve('user deleted successfully')
         } catch (err) { return Promise.reject(err) }
     }
 
-    async register(req: any) {
-        try {
-            console.log("controller hit-----", req)
-            let { firstName, lastName, contactNumber, otp } = req.body
-
-            if (!(contactNumber && otp && firstName && lastName)) {
-                console.log("All input is required");
-            }
-
-            let existingUser = await User.findOne({ where: { contactNumber: contactNumber } })
-
-            if (existingUser) {
-                throw (`user with username ${contactNumber} already exists`)
-            }
-
-            const encryptedPassword = await bcrypt.hash(otp, 10);
-
-            //creating user 
-            const user = await User.create({ firstName, lastName, contactNumber, otp: encryptedPassword });
-
-            console.log("user------", user)
-
-            // const token = jwt.sign(
-            //     { user_id: user.id,contactNumber },
-            //     process.env.TOKEN_KEY,
-            //     {
-            //       expiresIn: "2h",
-            //     }
-            //   );
-
-            //   user.token = token;
-        } catch (err) {
-            console.log(err);
-        }
-
-
-    }
 
 }
 
